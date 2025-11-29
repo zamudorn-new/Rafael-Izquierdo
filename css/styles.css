@@ -26,11 +26,23 @@ header {
 }
 
 .logo {
-    font-family: "Brush Script Std", "Brush Script MT", cursive;
-    font-size: 36px;
-    font-weight: bold;
     text-decoration: none;
     color: #000;
+    display: inline-block;
+    line-height: 1;
+}
+
+/* Image logo sizing */
+.logo-img {
+    height: 36px; /* approximate size requested */
+    width: auto;
+    display: block;
+}
+
+/* Ensure header alignment when using image */
+header .logo {
+    display: flex;
+    align-items: center;
 }
 
 nav ul {

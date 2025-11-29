@@ -359,9 +359,9 @@ function cambiarSeccion(seccion) {
 
     // Actualizar la URL con la sección (excepto para 'inicio')
     if (seccion !== 'inicio') {
-        window.location.hash = seccion;
+        history.replaceState(null, '', `#${seccion}`);
     } else {
-        window.location.hash = '';
+        history.replaceState(null, '', ' ');
     }
 
     // Cargar contenido según la sección
@@ -551,7 +551,7 @@ function mostrarArticulo(id) {
     
     // Actualizar la URL con el slug del artículo (formato: seccion/articulo-slug)
     const slug = generarSlug(articulo.titulo);
-    window.location.hash = `${articulo.seccion}/${slug}`;
+    history.replaceState(null, '', `#${articulo.seccion}/${slug}`);
     
     // Actualizar contenido del artículo
     document.getElementById('titulo-articulo').innerHTML = articulo.titulo;
@@ -592,9 +592,6 @@ function mostrarArticulo(id) {
     // Cambiar a vista de artículo
     vistaPrincipal.classList.add('oculto');
     vistaArticulo.classList.remove('oculto');
-    
-    // Scroll to top
-    window.scrollTo(0, 0);
 }
 
 function volverAPrincipal() {

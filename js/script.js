@@ -27,6 +27,21 @@ const nombreBuenoInput = document.getElementById('nombre-bueno');
 const verTodoBoton = document.getElementById('ver-todo');
 const mensajeConfirmacion = document.getElementById('mensaje-confirmacion');
 
+// Función para generar slug URL-friendly desde el título
+function generarSlug(titulo) {
+    return titulo
+        .toLowerCase()
+        .trim()
+        .replace(/<[^>]*>/g, '') // Remover etiquetas HTML
+        .normalize('NFD') // Descomponer caracteres acentuados
+        .replace(/[\u0300-\u036f]/g, '') // Remover acentos
+        .replace(/[^\w\s\-]/g, '') // Remover caracteres especiales
+        .replace(/\s+/g, '-') // Reemplazar espacios con guiones
+        .replace(/-+/g, '-') // Remover guiones múltiples
+        .replace(/^-+|-+$/g, '') // Remover guiones al inicio/final
+        .substring(0, 50); // Limitar a 50 caracteres
+}
+
 // Función para cargar artículos desde JSON
 async function cargarArticulos() {
     try {
@@ -59,10 +74,58 @@ async function cargarArticulos() {
         // Inicializar la aplicación
         inicializarApp();
         
+        // Verificar si hay un artículo en la URL y mostrarlo
+        verificarUrlArticulo();
+        
     } catch (error) {
         console.error('Error cargando artículos:', error);
         mostrarError('Error al cargar el contenido. Por favor, recarga la página.');
     }
+}
+
+// Función para verificar si hay un artículo en la URL y mostrarlo
+function verificarUrlArticulo() {
+    const hash = window.location.hash.slice(1); // Remover el #
+    if (!hash) return;
+    
+    // Verificar si contiene un slash (formato: seccion/articulo-slug)
+    if (hash.includes('/')) {
+        const [seccion, slug] = hash.split('/');
+        // Buscar el artículo por slug
+        const articulo = articulos.find(art => generarSlug(art.titulo) === slug && art.seccion === seccion);
+        if (articulo) {
+            mostrarArticulo(articulo.id);
+        }
+        return;
+    }
+    
+    // Verificar si es una sección válida
+    const secciones = ['todo', 'cuento-novela', 'poesia', 'cine', 'literatura', 'ensayo', 'notas-personales'];
+    if (secciones.includes(hash)) {
+        cambiarSeccion(hash);
+        return;
+    }
+    
+    // Buscar el artículo por ID o slug (compatibilidad con URLs antiguas)
+    let articulo = null;
+    
+    // Primero intentar por ID (si es un número)
+    if (/^\d+$/.test(hash)) {
+        const id = parseInt(hash);
+        articulo = articulos.find(art => art.id === id);
+    } else {
+        // Si no, buscar por slug
+        articulo = articulos.find(art => generarSlug(art.titulo) === hash);
+    }
+    
+    if (articulo) {
+        mostrarArticulo(articulo.id);
+    }
+}
+
+// Función para manejar cambios en la URL (cuando el usuario usa botones de navegación del navegador)
+function manejarCambioHash() {
+    verificarUrlArticulo();
 }
 
 function mostrarLoading() {
@@ -272,6 +335,9 @@ function inicializarApp() {
         }
     });
 
+    // Escuchar cambios en el hash (navegación del navegador)
+    window.addEventListener('hashchange', manejarCambioHash);
+
     // Cargar contenido inicial
     cargarSeccionInicio();
 }
@@ -290,6 +356,13 @@ function cambiarSeccion(seccion) {
     // Mostrar la sección seleccionada
     target.classList.remove('oculto');
     estado.seccionActual = seccion;
+
+    // Actualizar la URL con la sección (excepto para 'inicio')
+    if (seccion !== 'inicio') {
+        window.location.hash = seccion;
+    } else {
+        window.location.hash = '';
+    }
 
     // Cargar contenido según la sección
     if (seccion === 'inicio') {
@@ -475,6 +548,10 @@ function mostrarArticulo(id) {
     
     estado.articuloActual = articulo;
     estado.modoTraduccion = false;
+    
+    // Actualizar la URL con el slug del artículo (formato: seccion/articulo-slug)
+    const slug = generarSlug(articulo.titulo);
+    window.location.hash = `${articulo.seccion}/${slug}`;
     
     // Actualizar contenido del artículo
     document.getElementById('titulo-articulo').innerHTML = articulo.titulo;

@@ -1,0 +1,5 @@
+{
+  "supabaseUrl": "https://vbmaeobwzcahzdpuyosy.supabase.co",
+  "supabaseAnonKey": "sb_publishable_ruUblRWNj7i1W2dNOXmIRw_aNHkgOME",
+  "privateEndpoint": "https://vbmaeobwzcahzdpuyosy.supabase.co/functions/v1/store-name"
+}

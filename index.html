@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R - Textos</title>
+    <link rel="icon" href="imagenes/logo.png" type="image/png">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Mensaje de confirmación -->
+    <div class="mensaje-confirmacion" id="mensaje-confirmacion">
+        Afirmado exitoso.
+    </div>
+
+    <!-- Vista principal con navegación y listado de artículos -->
+    <div id="vista-principal">
+        <header>
+            <a href="#" class="logo">R</a>
+            <nav>
+                <ul>
+                    <li><a href="#" data-seccion="inicio">Inicio</a></li>
+                    <li><a href="#" data-seccion="todo">Todo</a></li>
+                    <li><a href="#" data-seccion="cuento-novela">Cuento y novela</a></li>
+                    <li><a href="#" data-seccion="poesia">Poesía</a></li>
+                    <li><a href="#" data-seccion="cine">Cine</a></li>
+                    <li><a href="#" data-seccion="literatura">Literatura</a></li>
+                    <!--<li><a href="#" data-seccion="arte">Arte</a></li>-->
+                    <li><a href="#" data-seccion="ensayo">Ensayo</a></li>
+                    <li><a href="#" data-seccion="notas-personales">Notas personales</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- Sección de inicio -->
+        <section id="inicio" class="seccion">
+            <!-- Presentación del autor -->
+            <div class="presentacion">
+                <img src="imagenes/Yo_cotorra_transparente.png" alt="Foto del autor" class="foto-autor">
+                <div class="texto-presentacion">
+                    <p> Tu exbanquero favorito, el mero mero petatero, una nube en pantalones. </p><p>Comparto lo que escribo por aquí. Ensayos, ficción, algo de poesía y notas personales.</p><p><em>Rafael Z.V.</em></p>
+                </div>
+            </div>            
+            <h2>Destacados Noviembre 2025</h2>
+            <div class="grid-articulos" id="grid-destacados">
+                <!-- Artículos destacados se cargarán aquí -->
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#" class="boton" id="ver-todo">Ver todo</a>
+            </div>
+        </section>
+        
+        <!-- Otras secciones (inicialmente ocultas) -->
+        <section id="todo" class="seccion oculto">
+            <h2>Todos los artículos</h2>
+            <div class="lista-articulos" id="lista-todo">
+                <!-- Todos los artículos se cargarán aquí -->
+            </div>
+        </section>
+        
+        <!-- Secciones específicas (inicialmente ocultas) -->
+        <section id="cuento-novela" class="seccion oculto">
+            <h2>Cuento y novela</h2>
+            <div class="lista-articulos"></div>
+        </section>
+        
+        <section id="poesia" class="seccion oculto">
+            <h2>Poesía</h2>
+            <div class="lista-articulos"></div>
+        </section>
+        
+        <section id="cine" class="seccion oculto">
+            <h2>Cine</h2>
+            <div class="lista-articulos"></div>
+        </section>
+        
+        <section id="literatura" class="seccion oculto">
+            <h2>Literatura</h2>
+            <div class="lista-articulos"></div>
+        </section>
+        
+        <!--<section id="arte" class="seccion oculto">
+            <h2>Arte</h2>
+            <div class="lista-articulos"></div>
+        </section>-->
+        
+        <section id="ensayo" class="seccion oculto">
+            <h2>Ensayo</h2>
+            <div class="lista-articulos"></div>
+        </section>
+      
+        <section id="notas-personales" class="seccion oculto">
+            <h2>Notas personales</h2>
+            <div class="lista-articulos"></div>
+        </section>
+    </div>
+    
+    <!-- Vista de artículo individual -->
+    <div id="vista-articulo" class="oculto">
+        <div class="pagina-articulo">
+            <div class="botones-articulo">
+                <button id="boton-regresar" class="boton">Regresar</button>
+                <button id="boton-traduccion" class="boton">Traducción</button>
+            </div>
+            
+            <div class="encabezado">
+                <h1 id="titulo-articulo"></h1>
+                <div class="meta">
+                    Por <span id="autor-articulo"></span> | <span id="fecha-articulo"></span>
+                </div>
+            </div>
+            
+            <img id="imagen-articulo" src="" alt="" class="imagen-articulo oculto">
+            
+            <div class="contenido" id="contenido-articulo"></div>
+            
+            <div class="contenido oculto" id="contenido-traduccion"></div>
+            
+            <div class="botones-articulo">
+                <button id="boton-bueno" class="boton">Está bueno</button>
+            </div>
+            
+            <div class="contador-bueno" id="contador-bueno"></div>
+        </div>
+    </div>
+    
+    <!-- Modal para registrar "está bueno" -->
+    <div id="modal-bueno" class="modal">
+        <div class="modal-contenido">
+            <h3>Afirmar que el texto está bueno</h3>
+            <p>Ingresa tu nombre:</p>
+            <input type="text" id="nombre-bueno" placeholder="Tu nombre" maxlength="300">
+            <div class="modal-botones">
+                <button id="cancelar-bueno" class="boton">Cancelar</button>
+                <button id="confirmar-bueno" class="boton">Afirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

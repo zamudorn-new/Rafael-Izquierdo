@@ -1,0 +1,472 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Palatino Linotype", Palatino, Georgia, serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header y navegación */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-family: "Brush Script Std", "Brush Script MT", cursive;
+    font-size: 36px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+nav li {
+    margin-left: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Secciones de contenido */
+.seccion {
+    margin-bottom: 40px;
+}
+
+.seccion h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Presentación en inicio */
+.presentacion {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.foto-autor {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #eee;
+}
+
+.texto-presentacion {
+    flex: 1;
+}
+
+.texto-presentacion p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.enlace-acerca {
+    color: #666;
+    text-decoration: none;
+    font-style: italic;
+    border-bottom: 1px dotted #666;
+}
+
+.enlace-acerca:hover {
+    color: #333;
+}
+
+/* Grid de artículos para la página principal */
+.grid-articulos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Lista de artículos para otras secciones */
+.lista-articulos {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Tarjetas de artículo para página principal */
+.articulo-card {
+    border: 1px solid #eee;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff;
+}
+
+.articulo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.articulo-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    cursor: pointer;
+    display: block;
+}
+
+.articulo-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.articulo-card .meta {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.articulo-card .resumen {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.articulo-card .leer-mas {
+    display: inline-block;
+    margin-top: 10px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+}
+
+/* Artículos en lista para otras secciones */
+.articulo-lista {
+    display: flex;
+    border: 1px solid #eee;
+    padding: 15px;
+    gap: 20px;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 100%;
+    background: #fff;
+}
+
+.articulo-lista.sin-imagen {
+    gap: 0;
+}
+
+.articulo-lista .imagen-contenedor {
+    width: 200px;
+    height: 150px;
+    flex-shrink: 0;
+}
+
+.articulo-lista img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    display: block;
+}
+
+.articulo-lista .contenido {
+    flex: 1;
+    min-width: 0;
+}
+
+.articulo-lista.sin-imagen .contenido {
+    width: 100%;
+}
+
+.articulo-lista h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.articulo-lista .meta {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.articulo-lista .resumen {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.articulo-lista .leer-lista {
+    display: inline-block;
+    margin-top: 10px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+}
+
+/* Página de artículo individual */
+.pagina-articulo {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pagina-articulo .encabezado {
+    margin-bottom: 30px;
+}
+
+.pagina-articulo h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.pagina-articulo .meta {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.pagina-articulo .imagen-articulo {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    margin-bottom: 30px;
+    cursor: pointer;
+    display: block;
+}
+
+.pagina-articulo .contenido {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.pagina-articulo .contenido p {
+    line-height: 1.8;
+    margin-bottom: 1em;
+    text-align: justify;
+}
+
+/* Botones */
+.botones-articulo {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.boton {
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 1px solid #333;
+    color: #333;
+    cursor: pointer;
+    font-family: "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.boton:hover {
+    background-color: #f5f5f5;
+}
+
+/* Modal para el contador de "está bueno" */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-contenido {
+    background-color: white;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 5px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal h3 {
+    margin-bottom: 15px;
+}
+
+.modal input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    font-family: "Palatino Linotype", Palatino, Georgia, serif;
+}
+
+.modal-botones {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.modal-botones button {
+    margin-left: 10px;
+}
+
+/* Contador de "está bueno" */
+.contador-bueno {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Mensaje de confirmación */
+.mensaje-confirmacion {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1001;
+    display: none;
+}
+
+/* Contador de visitas (oculto para usuarios) */
+.contador-visitas {
+    display: none;
+}
+
+/* Ocultar elementos según la vista */
+.oculto {
+    display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    nav ul {
+        margin-top: 15px;
+    }
+    
+    nav li {
+        margin-left: 0;
+        margin-right: 15px;
+    }
+    
+    .presentacion {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .foto-autor {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .grid-articulos {
+        grid-template-columns: 1fr;
+    }
+    
+    .articulo-lista {
+        flex-direction: column;
+    }
+    
+    .articulo-lista .imagen-contenedor {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .botones-articulo {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .boton {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Loading states */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-size: 18px;
+}
+
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #333;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error states */
+.error {
+    text-align: center;
+    padding: 40px;
+    color: #d32f2f;
+    background-color: #ffebee;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+/* Image fade-in for better UX */
+.articulo-card img,
+.articulo-lista img,
+.imagen-articulo {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.articulo-card img.loaded,
+.articulo-lista img.loaded,
+.imagen-articulo.loaded {
+    opacity: 1;
+}
